@@ -10,10 +10,10 @@ This repository contains small, focused examples for exploring TypeScript fundam
 ## Contents
 
 - [What's inside](#whats-inside)
+- [Learning path](#learning-path)
 - [Getting started](#getting-started)
 - [Type-check the examples](#type-check-the-examples)
 - [Run the starter app](#run-the-starter-app)
-- [Learning approach](#learning-approach)
 
 ## What's inside
 
@@ -21,9 +21,19 @@ This repository contains small, focused examples for exploring TypeScript fundam
 | --- | --- |
 | [`app.ts`](./app.ts) | A tiny starter program to edit and run. |
 | [`Basic Types/basicTypes.ts`](./Basic%20Types/basicTypes.ts) | Examples of primitives, arrays, tuples, enums, `any`, `unknown`, `void`, `null`, `undefined`, and `never`. |
+| [`Type Inference and Annotations/inferenceAndAnnotations.ts`](./Type%20Inference%20and%20Annotations/inferenceAndAnnotations.ts) | Examples of inferred variable types and explicit parameter and return type annotations. |
 | [`tsconfig.json`](./tsconfig.json) | TypeScript compiler configuration, including strict type-checking options. |
 
 The lessons are intentionally kept close to the code so you can experiment as you read.
+
+## Learning path
+
+The examples currently cover these topics:
+
+1. **Basic types** — primitives, arrays, tuples, enums, and special types.
+2. **Type inference and annotations** — when TypeScript infers a type and when to declare one explicitly.
+
+Start with the basics, then move on to inference and annotations. Each lesson is a standalone file you can read and experiment with.
 
 ## Getting started
 
@@ -62,7 +72,7 @@ node dist/app.js
 
 The `Basic Types` file is a lesson rather than a clean-running app: its final example deliberately throws an error to demonstrate the `never` type. If you run that example, expect execution to stop at that point.
 
-## Learning approach
+## How to use the examples
 
 1. Open a lesson and read its examples and notes.
 2. Make a small change or add your own example.
