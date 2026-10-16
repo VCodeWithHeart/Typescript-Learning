@@ -1,82 +1,71 @@
 # TypeScript Learning
 
-> A hands-on space for learning TypeScript, one concept at a time.
+> A hands-on course notebook for learning TypeScript, one example at a time.
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-learning-blue?logo=typescript&logoColor=white)
 ![Status](https://img.shields.io/badge/status-in%20progress-orange)
 
-This repository contains small, focused examples for exploring TypeScript fundamentals. Read through the examples, run the compiler, and change the code to see how TypeScript's type system helps catch mistakes before runtime.
-
-## Contents
-
-- [What's inside](#whats-inside)
-- [Learning path](#learning-path)
-- [Getting started](#getting-started)
-- [Type-check the examples](#type-check-the-examples)
-- [Run the starter app](#run-the-starter-app)
-
-## What's inside
-
-| Path | What you'll find |
-| --- | --- |
-| [`app.ts`](./app.ts) | A tiny starter program to edit and run. |
-| [`Basic Types/basicTypes.ts`](./Basic%20Types/basicTypes.ts) | Examples of primitives, arrays, tuples, enums, `any`, `unknown`, `void`, `null`, `undefined`, and `never`. |
-| [`Type Inference and Annotations/inferenceAndAnnotations.ts`](./Type%20Inference%20and%20Annotations/inferenceAndAnnotations.ts) | Examples of inferred variable types and explicit parameter and return type annotations. |
-| [`tsconfig.json`](./tsconfig.json) | TypeScript compiler configuration, including strict type-checking options. |
-
-The lessons are intentionally kept close to the code so you can experiment as you read.
+This repository collects small examples and practice code from a TypeScript course. Read a lesson, try changing the types, and use the compiler to see what TypeScript catches.
 
 ## Learning path
 
-The examples currently cover these topics:
+| Lesson | What I practiced |
+| --- | --- |
+| [Basic Types](./Basic%20Types/basicTypes.ts) | Primitive and reference values, arrays, tuples, enums, and `any`, `unknown`, `void`, `null`, `undefined`, and `never`. |
+| [Type Inference and Annotations](./Type%20Inference%20and%20Annotations/inferenceAndAnnotations.ts) | Letting TypeScript infer types and annotating variables, function parameters, and return values. |
+| [Unions and Intersections](./Unions%20and%20Intersections/unionsAndIntersections.ts) | Union and intersection types, plus how interfaces and type aliases behave when declared more than once. |
+| [Interfaces and Type Aliases](./Interfaces%20and%20Type%20Aliases/interfacesAndTypeAliases.ts) | Describing object shapes, optional properties, extending and merging interfaces, and creating reusable type aliases. |
+| [Functions](./Functions/functions.ts) | Typed parameters and return values, callbacks, optional and default parameters, rest parameters, and overloads. |
+| [Classes and Objects](./Classes%20and%20Objects/classes.ts) | Classes, constructors, parameter properties, inheritance, access modifiers, `readonly`, getters and setters, static members, and abstract classes. |
+| [Generics](./Generics/generics.ts) | Reusable generic functions, interfaces, and classes, with type arguments that can also be inferred. |
+| [Type Assertions](./Type%20Assertion/typeAssertion.ts) | Assertions, converting values between types, and safely handling a possibly missing DOM element. |
+| [Type Guards and Utility Types](./Type%20Guards%20%26%20Utility%20Types/typeGuard.ts) · [Utility types](./Type%20Guards%20%26%20Utility%20Types/utilityTypes.ts) | Narrowing types with `typeof` and `instanceof`; shaping types with `Partial`, `Required`, `Readonly`, `Pick`, `Omit`, `Record`, `keyof`, and `Exclude`. |
+| [Modules](./Modules/payment.ts) | Exporting and importing functions between files. See the imports in [app.ts](./app.ts). |
 
-1. **Basic types** — primitives, arrays, tuples, enums, and special types.
-2. **Type inference and annotations** — when TypeScript infers a type and when to declare one explicitly.
+## Quick recap
 
-Start with the basics, then move on to inference and annotations. Each lesson is a standalone file you can read and experiment with.
+```ts
+type Status = "pending" | "approved";
 
-## Getting started
+interface User {
+  name: string;
+  age?: number;
+}
 
-### Prerequisites
+function greet(user: User): string {
+  return `Hello, ${user.name}`;
+}
 
-- [Node.js](https://nodejs.org/) with npm
+type UserKeys = keyof User;
+type UserWithoutAge = Omit<User, "age">;
+type UserNameOnly = Pick<User, "name">;
+```
 
-### Install
+- Use **`keyof T`** to get a union of an object's property names.
+- Use **`Pick<T, Keys>`** to keep selected properties.
+- Use **`Omit<T, Keys>`** to remove selected properties.
+- To pick every key except a few, use **`Pick<T, Exclude<keyof T, KeysToRemove>>`**.
+- Prefer **`unknown`** over `any` when a value's type is not known; narrow it before using it.
 
-Clone the repository and install its development dependencies:
+## Get started
+
+Install the development dependency:
 
 ```bash
-git clone https://github.com/VCodeWithHeart/Typescript-Learning.git
-cd Typescript-Learning
 npm install
 ```
 
-## Type-check the examples
-
-Run the TypeScript compiler in check-only mode:
+Check the TypeScript files for type errors:
 
 ```bash
 npx tsc --noEmit
 ```
 
-The project uses strict type-checking settings to make type-related behavior easier to explore.
-
-## Run the starter app
-
-Compile `app.ts` to JavaScript, then run the generated file with Node.js:
+To compile and run the small starter program:
 
 ```bash
 npx tsc app.ts --target ES2020 --module commonjs --outDir dist
 node dist/app.js
 ```
 
-The `Basic Types` file is a lesson rather than a clean-running app: its final example deliberately throws an error to demonstrate the `never` type. If you run that example, expect execution to stop at that point.
-
-## How to use the examples
-
-1. Open a lesson and read its examples and notes.
-2. Make a small change or add your own example.
-3. Run `npx tsc --noEmit` and inspect any compiler feedback.
-4. Run the code when appropriate and compare compile-time checks with runtime behavior.
-
-TypeScript is a superset of JavaScript that adds static types. Types are checked during development and compilation; they do not replace runtime validation for untrusted input.
+The lesson files are practice notes, not all standalone applications. For example, `basicTypes.ts` ends with a deliberate thrown error to demonstrate `never`. TypeScript checks types during development and compilation; values from untrusted sources still need runtime validation.
