@@ -1,3 +1,5 @@
+import { makePayment, calculateTotal, refundPayment } from "./Modules/payment";
+
 var a = "hi";
 
 function greet() {
