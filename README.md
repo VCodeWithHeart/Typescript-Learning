@@ -22,6 +22,14 @@ This repository collects small examples and practice code from a TypeScript cour
 | [Type Guards and Utility Types](./Type%20Guards%20%26%20Utility%20Types/typeGuard.ts) · [Utility types](./Type%20Guards%20%26%20Utility%20Types/utilityTypes.ts) | Narrowing types with `typeof` and `instanceof`; shaping types with `Partial`, `Required`, `Readonly`, `Pick`, `Omit`, `Record`, `keyof`, and `Exclude`. |
 | [Modules](./Modules/payment.ts) | Exporting and importing functions between files. See the imports in [app.ts](./app.ts). |
 
+## Key notes from the Generics practice
+
+- Generics let a function or type work with different data types without giving up type safety.
+- A generic function can be written like `function log<T>(value: T): T { return value; }`.
+- `T` can be inferred automatically, or passed explicitly when needed, such as `getFirstItem<number>([10, 20, 30])`.
+- Generic constraints help restrict a type, for example `K extends keyof T` ensures the key belongs to the object being used.
+- This is useful for reusable helpers like `getFirstItem`, `wrapInArray`, and `getProperty`.
+
 ## Quick recap
 
 ```ts
