@@ -9,4 +9,4 @@ function greet(name: string): string {
   return `Hello, ${name}!`;
 }
 
-// As you can see in the above function, we have used type annotations for the parameter 'name' as sting and the return type of the function as string. This helps TypeScript to catch any type-related errors during development.
+// As you can see in the above function, we have used type annotations for the parameter 'name' as string and the return type of the function as string. This helps TypeScript to catch any type-related errors during development.
